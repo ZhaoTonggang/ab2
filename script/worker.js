@@ -179,9 +179,9 @@ const chunkSize = 1024 * 1024, // 1MB/块
 							if (now - lastStatusTime < 200) return;
 							lastStatusTime = now;
 							const totalReceived = volProgress.reduce((a, b) => a + b, 0),
-								totalSize = volSizes.reduce((a, b) => a + b, 0);
+								totalSize = volSizes.reduce((a, b) => a + b, 0) || 81148977;
 							sendStatus(`数据包下载中... ` +
-								`(${formatBytes(totalReceived)}/${formatBytes( totalSize|| 81148977)}) ${Math.floor((totalReceived / totalSize) * 100)}%`
+								`(${formatBytes(totalReceived)}/${formatBytes(totalSize)}) ${Math.floor((totalReceived / totalSize) * 100)}%`
 							);
 						};
 					return downloadWithSlices(path, `数据包${i + 1}`, progressCallback)
